@@ -57,12 +57,9 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/acceder")
-	public String acceder(Usuario usuario, HttpSession session) {
-		logger.info("Accesos : {}", usuario);
+	public String acceder(Usuario usuario, HttpSession session) {		
 		
-		//Optional<Usuario> user=usuarioService.findByEmail(usuario.getEmail());
 		Optional<Usuario> user=usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString()));
-		//logger.info("Usuario de db: {}", user.get());
 		
 		if (user.isPresent()) {
 			session.setAttribute("idusuario", user.get().getId());
@@ -72,10 +69,7 @@ public class UsuarioController {
 			}else {
 				return "redirect:/";
 			}
-		}else {
-			logger.info("Usuario no existe");
 		}
-		
 		return "redirect:/";
 	}
 	

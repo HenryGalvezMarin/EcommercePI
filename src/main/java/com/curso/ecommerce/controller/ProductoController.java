@@ -116,6 +116,11 @@ public class ProductoController {
 		productoService.delete(id);
 		return "redirect:/productos";
 	}
+	@GetMapping("/lista-productos")
+    public String mostrarProductos(Model model) {
+		model.addAttribute("productos", productoService.findAll());
+        return "productos/lista-productos";
+    }
 	
 	
 }
