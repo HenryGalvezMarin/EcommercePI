@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.curso.ecommerce.model.Producto;
@@ -117,9 +118,10 @@ public class ProductoController {
 		return "redirect:/productos";
 	}
 	@GetMapping("/lista-productos")
+	@ResponseBody
     public String mostrarProductos(Model model) {
 		model.addAttribute("productos", productoService.findAll());
-        return "productos/lista-productos";
+        return "Prueba";
     }
 	
 	
